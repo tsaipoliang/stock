@@ -19,13 +19,14 @@ from linebot.exceptions import (
 from linebot.models import *
 
 app = Flask(__name__)
+get_2330=yahoo_stock_crawler('2330.TW')
 
 # 必須放上自己的Channel Access Token
 line_bot_api = LineBotApi('SUJCU2yVlEe6s93XZm4ssrbHj1Zax1lz4m429ZYUNAzUxXUQxalGBUOyGNU383UhYa1IDsQpeauu9WJa7I+mmCXwiFSHpsXziUpEocnI2j0eNVmeVJ5IGeEbmMZrZPfWH/PFjA04eTq2hRMIV8b5/QdB04t89/1O/w1cDnyilFU=')
 # 必須放上自己的Channel Secret
 handler = WebhookHandler('d68c5d0543cba2367f26f7922f6b74a6')
 
-line_bot_api.push_message('U9a880705aba3434ff1b4c8bcad222f79', TextSendMessage(text='Get 2330='))
+line_bot_api.push_message('U9a880705aba3434ff1b4c8bcad222f79', TextSendMessage(text='Get 2330='+get_2330))
 
 # 監聽所有來自 /callback 的 Post Request
 @app.route("/callback", methods=['POST'])
@@ -67,8 +68,6 @@ if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port)
 
-get_2330=yahoo_stock_crawler('2330.TW')
-line_bot_api.push_message('U9a880705aba3434ff1b4c8bcad222f79', TextSendMessage(text=get_2330))
 
 
 
