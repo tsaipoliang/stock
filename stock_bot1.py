@@ -67,6 +67,8 @@ if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port)
 
+get_2330=yahoo_stock_crawler('2330.TW')
+line_bot_api.push_message('U9a880705aba3434ff1b4c8bcad222f79', TextSendMessage(text=get_2330))
 
 
 
