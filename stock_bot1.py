@@ -6,6 +6,8 @@ Created on Wed Aug 10 19:53:10 2022
 @author: tsaipoliang
 """
 
+import requests
+from bs4 import BeautifulSoup
 #載入LineBot所需要的套件
 from flask import Flask, request, abort
 
