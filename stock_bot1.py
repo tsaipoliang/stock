@@ -46,7 +46,7 @@ def callback():
 
     # get request body as text
     body = request.get_data(as_text=True)
-    get_stock=yahoo_stock_crawler(str(body))
+    
     app.logger.info("Request body: " + body)
 
     # handle webhook body
@@ -61,7 +61,8 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     message = TextSendMessage(text=event.message.text)
-    line_bot_api.reply_message(event.reply_token,message)
+    #get_stock=yahoo_stock_crawler(message)
+    line_bot_api.reply_message(event.reply_token,message+'=')
 
 
 #主程式
