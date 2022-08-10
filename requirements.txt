@@ -2,4 +2,5 @@ gunicorn
 Flask
 line-bot-sdk
 pymongo
-bs4
+Bs4
+requests
