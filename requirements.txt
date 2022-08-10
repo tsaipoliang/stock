@@ -3,4 +3,3 @@ Flask
 line-bot-sdk
 pymongo
 BeautifulSoup
-requests
