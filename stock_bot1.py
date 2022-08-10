@@ -17,9 +17,6 @@ from linebot.exceptions import (
 )
 from linebot.models import *
 
-import requests
-from bs4 import BeautifulSoup
-
 app = Flask(__name__)
 
 # 必須放上自己的Channel Access Token
@@ -27,7 +24,7 @@ line_bot_api = LineBotApi('SUJCU2yVlEe6s93XZm4ssrbHj1Zax1lz4m429ZYUNAzUxXUQxalGB
 # 必須放上自己的Channel Secret
 handler = WebhookHandler('d68c5d0543cba2367f26f7922f6b74a6')
 
-line_bot_api.push_message('U9a880705aba3434ff1b4c8bcad222f79', TextSendMessage(text='Get 2330='))
+line_bot_api.push_message('U9a880705aba3434ff1b4c8bcad222f79', TextSendMessage(text='你可以開始了'))
 
 # 監聽所有來自 /callback 的 Post Request
 @app.route("/callback", methods=['POST'])
@@ -53,7 +50,15 @@ def handle_message(event):
     message = TextSendMessage(text=event.message.text)
     line_bot_api.reply_message(event.reply_token,message)
 
-
+#def yahoo_stock_crawler(stock):
+#    headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) \
+#                           AppleWebKit/537.36 (KHTML, like Gecko) \
+#                           Chrome/102.0.0.0 Safari/537.36'}
+#    url=f'https://finance.yahoo.com/quote/{stock}?p={stock}'
+#    r=requests.get(url, headers=headers)
+#    soup=BeautifulSoup(r.text, 'lxml')
+#    price=soup.find('fin-streamer', {'class': 'Fw(b) Fz(36px) Mb(-4px) D(ib)'})
+#    return float(price.text)
 
 #主程式
 import os
@@ -61,8 +66,7 @@ if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port)
 
-#get_stock=yahoo_stock_crawler('2330.TW')
-#line_bot_api.push_message('U9a880705aba3434ff1b4c8bcad222f79', TextSendMessage(text=get_stock))
+
 
 
 #for i in range(0,5):
