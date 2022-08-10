@@ -62,7 +62,7 @@ def callback():
 def handle_message(event):
     message = TextSendMessage(text=event.message.text)
     #get_stock=yahoo_stock_crawler(message)
-    line_bot_api.reply_message(event.reply_token,message+'=')
+    line_bot_api.reply_message(event.reply_token,'===')
 
 
 #主程式
