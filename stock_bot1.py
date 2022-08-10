@@ -30,10 +30,10 @@ handler = WebhookHandler('d68c5d0543cba2367f26f7922f6b74a6')
 
 line_bot_api.push_message('U9a880705aba3434ff1b4c8bcad222f79', TextSendMessage(text='2330 get stock start'))
 
-for i in range(0,5):
-    price=yahoo_stock_crawler('2330.TW')+datetime.datetime.now()
-    line_bot_api.push_message('U9a880705aba3434ff1b4c8bcad222f79', TextSendMessage(text=price))
-    time.sleep(60)
+#for i in range(0,5):
+#    price=yahoo_stock_crawler('2330.TW')+datetime.datetime.now()
+#    line_bot_api.push_message('U9a880705aba3434ff1b4c8bcad222f79', TextSendMessage(text=price))
+#    time.sleep(60)
 
 #print(price)
 #print(type(price))
