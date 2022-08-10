@@ -27,7 +27,7 @@ line_bot_api = LineBotApi('SUJCU2yVlEe6s93XZm4ssrbHj1Zax1lz4m429ZYUNAzUxXUQxalGB
 # 必須放上自己的Channel Secret
 handler = WebhookHandler('d68c5d0543cba2367f26f7922f6b74a6')
 
-line_bot_api.push_message('U9a880705aba3434ff1b4c8bcad222f79', TextSendMessage(text='你可以開始了'))
+line_bot_api.push_message('U9a880705aba3434ff1b4c8bcad222f79', TextSendMessage(text='Get 2330='))
 
 # 監聽所有來自 /callback 的 Post Request
 @app.route("/callback", methods=['POST'])
@@ -70,7 +70,7 @@ if __name__ == "__main__":
     app.run(host='0.0.0.0', port=port)
 
 get_stock=yahoo_stock_crawler('2330.TW')
-line_bot_api.push_message('U9a880705aba3434ff1b4c8bcad222f79', TextSendMessage(text=get_stock))
+#line_bot_api.push_message('U9a880705aba3434ff1b4c8bcad222f79', TextSendMessage(text=get_stock))
 
 
 #for i in range(0,5):
