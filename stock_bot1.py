@@ -26,7 +26,7 @@ def yahoo_stock_crawler(stock):
     r=requests.get(url, headers=headers)
     soup=BeautifulSoup(r.text, 'lxml')
     price=soup.find('fin-streamer', {'class': 'Fw(b) Fz(36px) Mb(-4px) D(ib)'})
-    return float(price.text)
+    return price.text
 
 app = Flask(__name__)
 get_2330=yahoo_stock_crawler('2330.TW')
@@ -36,7 +36,7 @@ line_bot_api = LineBotApi('SUJCU2yVlEe6s93XZm4ssrbHj1Zax1lz4m429ZYUNAzUxXUQxalGB
 # 必須放上自己的Channel Secret
 handler = WebhookHandler('d68c5d0543cba2367f26f7922f6b74a6')
 
-line_bot_api.push_message('U9a880705aba3434ff1b4c8bcad222f79', TextSendMessage(text='Get 2330=')
+line_bot_api.push_message('U9a880705aba3434ff1b4c8bcad222f79', TextSendMessage(text='Get 2330='+get_2330))
 
 # 監聽所有來自 /callback 的 Post Request
 @app.route("/callback", methods=['POST'])
