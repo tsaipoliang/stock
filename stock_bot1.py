@@ -18,6 +18,16 @@ from linebot.exceptions import (
 )
 from linebot.models import *
 
+def yahoo_stock_crawler(stock):
+    headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) \
+                           AppleWebKit/537.36 (KHTML, like Gecko) \
+                           Chrome/102.0.0.0 Safari/537.36'}
+    url=f'https://finance.yahoo.com/quote/{stock}?p={stock}'
+    r=requests.get(url, headers=headers)
+    soup=BeautifulSoup(r.text, 'lxml')
+    price=soup.find('fin-streamer', {'class': 'Fw(b) Fz(36px) Mb(-4px) D(ib)'})
+    return float(price.text)
+
 app = Flask(__name__)
 get_2330=yahoo_stock_crawler('2330.TW')
 
@@ -52,15 +62,6 @@ def handle_message(event):
     message = TextSendMessage(text=event.message.text)
     line_bot_api.reply_message(event.reply_token,message)
 
-def yahoo_stock_crawler(stock):
-    headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) \
-                           AppleWebKit/537.36 (KHTML, like Gecko) \
-                           Chrome/102.0.0.0 Safari/537.36'}
-    url=f'https://finance.yahoo.com/quote/{stock}?p={stock}'
-    r=requests.get(url, headers=headers)
-    soup=BeautifulSoup(r.text, 'lxml')
-    price=soup.find('fin-streamer', {'class': 'Fw(b) Fz(36px) Mb(-4px) D(ib)'})
-    return float(price.text)
 
 #主程式
 import os
